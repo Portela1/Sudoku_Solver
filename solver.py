@@ -23,7 +23,7 @@ def possibleNum(Board, i, j):
                 if not Board[x][j] == 0:
                         possiblesArray[Board[x][j]] = 1
         
-     
+
         l = i - i%3
         r = j - j%3
 
@@ -45,13 +45,13 @@ def solve(Board):
         i = 0
         j = 0
         possi = {}
-        if fullBoard(board):
-                printPretty.pprint(board)
+        if fullBoard(Board):
+                printPretty.pprint(Board)
                 return
         else:
                 for x in range (0,9):
                         for y in range(0,9):
-                                if board[x][y] == 0:
+                                if Board[x][y] == 0:
                                         i = x
                                         j = y
                                         break
@@ -59,20 +59,20 @@ def solve(Board):
                                 continue
                         break
 
-                possi = possibleNum(board,i,j)
+                possi = possibleNum(Board,i,j)
 
 
                 for x in range(1,10):
                         if not possi[x] == 0:
-                                board[i][j] = possi[x]
-                                solve(board)
+                                Board[i][j] = possi[x]
+                                solve(Board)
 
-                board[i][j] = 0
-
-
+                Board[i][j] = 0
 
 
-board = [
+
+
+board0 = [
         [7, 8, 0,   4, 0, 0,   1, 2, 0],
         [6, 0, 0,   0, 7, 5,   0, 0, 9],
         [0, 0, 0,   6, 0, 1,   0, 7, 8],
@@ -86,7 +86,20 @@ board = [
         [0, 4, 9,   2, 0, 6,   0, 0, 7],
         ]
 
+board1 = [
+        [7, 8, 0, 4, 3, 0, 1, 2, 0],
+        [6, 0, 0, 8, 7, 5, 0, 4, 9],
+        [4, 9, 3, 6, 2, 1, 5, 0, 8],
+        [8, 0, 7, 9, 4, 3, 2, 6, 1],
+        [2, 6, 1, 7, 0, 8, 9, 0, 4],
+        [9, 0, 4, 1, 0, 2, 0, 8, 0],
+        [5, 0, 8, 3, 9, 0, 6, 1, 2],
+        [1, 2, 6, 5, 8, 7, 4, 0, 3],
+        [0, 4, 0, 2, 0, 6, 0, 5, 0]
+        ]
 
 printPretty = pprint.PrettyPrinter(width=41,compact=True)
-solve(board)
+solve(board0)
+
+
 
